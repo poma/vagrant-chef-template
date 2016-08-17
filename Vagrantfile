@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
 
   # Enable and configure chef solo
   config.vm.provision :chef_solo do |chef|
-    chef.add_recipe "app::default"
+    chef.add_recipe "default"
     chef.add_recipe "usability"
     chef.add_recipe "usability::zsh"
     chef.add_recipe "usability::ssh-key"

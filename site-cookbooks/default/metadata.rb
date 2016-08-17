@@ -1,2 +1,2 @@
-name              "app"
+name              "default"
 version           "1.0.0"
