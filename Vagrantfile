@@ -7,20 +7,22 @@ Vagrant.configure("2") do |config|
 
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
-  config.hostmanager.manage_guest = false
+  config.hostmanager.manage_guest = true
   config.vm.hostname = project_name
   config.hostmanager.aliases = [ project_name + ".local" ]
   config.vm.network "private_network", type: "dhcp"
   config.vm.define project_name # Specify node name for Vagrant
 
-  # fix resolv.conf
-  # config.vm.provision "shell", inline: "ln -nsf /run/resolvconf/resolv.conf /etc/resolv.conf", privileged: true, name: "FIX RESOLV.CONF"
+  #config.ssh.username = 'root'
+  #config.ssh.password = 'vagrant'
+  #config.ssh.insert_key = 'true'
 
   config.vm.provision :hostmanager
   config.vm.provision :chef_solo do |chef|
     chef.add_recipe "default"
     chef.add_recipe "usability"
     chef.add_recipe "usability::zsh"
+    chef.add_recipe "usability::root"
     chef.add_recipe "usability::ssh-key"
     chef.json = {
       :default => {
