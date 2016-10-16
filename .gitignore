@@ -1,3 +1,4 @@
 .vagrant
 Berksfile.lock
 /shared/
+*.log
