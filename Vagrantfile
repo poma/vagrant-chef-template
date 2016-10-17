@@ -45,6 +45,7 @@ Vagrant.configure("2") do |config|
     #  `vagrant ssh -c "hostname -I"`.split()[1]
     #end
 	if vm.id
+	  #`VBoxManage guestproperty get #{vm.id} "/VirtualBox/GuestInfo/Net/1/V4/IP"`.split()[1]
 	  #`"%VBOX_MSI_INSTALL_PATH%/VBoxManage.exe" guestproperty get #{vm.id} "/VirtualBox/GuestInfo/Net/1/V4/IP"`.split()[1]
 	  `"$VBOX_INSTALL_PATH/VBoxManage" guestproperty get #{vm.id} "/VirtualBox/GuestInfo/Net/1/V4/IP"`.split()[1]
     end
